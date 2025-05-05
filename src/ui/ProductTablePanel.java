@@ -168,4 +168,8 @@ public class ProductTablePanel extends JPanel {
             JOptionPane.showMessageDialog(this, "Lütfen silmek için bir ürün seçin.");
         }
     }
+
+    public JTable getTable() {
+        return table;
+    }
 }

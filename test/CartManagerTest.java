@@ -44,6 +44,12 @@ class CartManagerTest {
         // Sepette sadece bir ürün olmalı
         assertEquals(1, cartManager.getCartItems().size(), "Sepette bir ürün olmalı");
         assertTrue(cartManager.getCartItems().contains(item), "Sepette ürün bulunmuyor");
+
+        // Test sonucunu yazdır
+        printTestResult("Test 1: Sepete Ürün Ekleme",
+                "Sepete ürün eklenir",
+                "Sepette bir ürün olmalı",
+                "Başarılı");
     }
 
     @Test
@@ -57,6 +63,12 @@ class CartManagerTest {
 
         // Sepet boş olmalı
         assertEquals(0, cartManager.getCartItems().size(), "Sepet boş olmalı");
+
+        // Test sonucunu yazdır
+        printTestResult("Test 2: Sepetten Ürün Çıkarma",
+                "Sepetten ürün çıkarılır",
+                "Sepet boş olmalı",
+                "Başarılı");
     }
 
     @Test
@@ -70,13 +82,24 @@ class CartManagerTest {
         // Toplam fiyatı kontrol et (100 + 150)
         double expectedTotal = 100.0 + 150.0;
         assertEquals(expectedTotal, cartManager.calculateTotal(), "Toplam fiyat yanlış hesaplandı");
-    }
 
+        // Test sonucunu yazdır
+        printTestResult("Test 3: Sepet Toplamını Hesaplama (Hediye Paketi Yok)",
+                "Sepet toplamı doğru hesaplanır",
+                "Toplam fiyat doğru hesaplanmalı",
+                "Başarılı");
+    }
 
     @Test
     void testEmptyCart() {
         // Sepet boş olmalı
         assertTrue(cartManager.getCartItems().isEmpty(), "Sepet boş değil");
+
+        // Test sonucunu yazdır
+        printTestResult("Test 4: Sepet Boş Kontrolü",
+                "Sepet boş olmalıdır",
+                "Sepet boş olmalı",
+                "Başarılı");
     }
 
     @Test
@@ -89,5 +112,19 @@ class CartManagerTest {
 
         // Sepette 2 ürün olmalı
         assertEquals(2, cartManager.getCartItems().size(), "Sepette iki ürün olmalı");
+
+        // Test sonucunu yazdır
+        printTestResult("Test 5: Birden Fazla Ürün Sepete Ekleme",
+                "Birden fazla ürün sepete eklenebilir",
+                "Sepette iki ürün olmalı",
+                "Başarılı");
+    }
+
+    // Test sonucunu yazdıran yardımcı metot
+    private void printTestResult(String testName, String step, String expected, String status) {
+        System.out.println(testName);
+        System.out.println("Adım: " + step);
+        System.out.println("Beklenen: " + expected);
+        System.out.println("Durum: " + status);
     }
 }

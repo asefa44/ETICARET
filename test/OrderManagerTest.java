@@ -45,6 +45,12 @@ class OrderManagerTest {
 
         // Sipariş içeriği doğru mu
         assertTrue(orders.get(0).get(0).contains("Test Ürünü"), "Sipariş içeriği doğru olmalı");
+
+        // Test sonucunu yazdır
+        printTestResult("Test 1: Sipariş Ekleme (Checkout)",
+                "Sipariş eklenir",
+                "Bir sipariş olmalı ve içeriği doğru olmalı",
+                "Başarılı");
     }
 
     @Test
@@ -65,5 +71,19 @@ class OrderManagerTest {
         // Sadece 1 sipariş olmalı ama içinde 2 ürün yer almalı
         assertEquals(1, orders.size(), "1 sipariş kaydedilmeli");
         assertEquals(2, orders.get(0).size(), "Siparişte 2 ürün olmalı");
+
+        // Test sonucunu yazdır
+        printTestResult("Test 2: Birden Fazla Ürün Siparişi",
+                "Birden fazla ürün sipariş edilir",
+                "Siparişte 2 ürün olmalı",
+                "Başarılı");
+    }
+
+    // Test sonucunu yazdıran yardımcı metot
+    private void printTestResult(String testName, String step, String expected, String status) {
+        System.out.println(testName);
+        System.out.println("Adım: " + step);
+        System.out.println("Beklenen: " + expected);
+        System.out.println("Durum: " + status);
     }
 }
